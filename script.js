@@ -15,6 +15,37 @@ document.querySelectorAll(".nav-link").forEach((n) =>
   }),
 )
 
+// Theme Toggle Functionality
+const themeToggle = document.getElementById("themeToggle")
+const themeIcon = document.getElementById("themeIcon")
+const body = document.body
+
+// Check for saved theme preference or default to light mode
+const currentTheme = localStorage.getItem("theme") || "light"
+body.setAttribute("data-theme", currentTheme)
+
+// Update icon based on current theme
+function updateThemeIcon(theme) {
+  if (theme === "dark") {
+    themeIcon.className = "fas fa-sun"
+  } else {
+    themeIcon.className = "fas fa-moon"
+  }
+}
+
+// Initialize icon
+updateThemeIcon(currentTheme)
+
+// Theme toggle event listener
+themeToggle.addEventListener("click", () => {
+  const currentTheme = body.getAttribute("data-theme")
+  const newTheme = currentTheme === "dark" ? "light" : "dark"
+
+  body.setAttribute("data-theme", newTheme)
+  localStorage.setItem("theme", newTheme)
+  updateThemeIcon(newTheme)
+})
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
@@ -48,7 +79,7 @@ function typeWriter(element, text, speed = 100) {
 window.addEventListener("load", () => {
   const typingElement = document.querySelector(".typing-text")
   if (typingElement) {
-    typeWriter(typingElement, "Hi, I'm Kirstein", 150)
+    typeWriter(typingElement, "I'm Kirstein Genzen Nojapa", 100)
   }
 })
 
@@ -56,9 +87,9 @@ window.addEventListener("load", () => {
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar")
   if (window.scrollY > 50) {
-    navbar.style.background = "rgba(15, 15, 35, 0.98)"
+    navbar.style.backdropFilter = "blur(20px)"
   } else {
-    navbar.style.background = "rgba(15, 15, 35, 0.95)"
+    navbar.style.backdropFilter = "blur(15px)"
   }
 })
 
@@ -112,17 +143,6 @@ document.querySelector(".contact-form").addEventListener("submit", function (e) 
   alert("Thank you for your message! Your email client should open now.")
 })
 
-// Parallax effect for hero section
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset
-  const parallax = document.querySelector(".hero")
-  const speed = scrolled * 0.5
-
-  if (parallax) {
-    parallax.style.transform = `translateY(${speed}px)`
-  }
-})
-
 // Add active class to navigation links based on scroll position
 window.addEventListener("scroll", () => {
   const sections = document.querySelectorAll("section[id]")
@@ -142,38 +162,6 @@ window.addEventListener("scroll", () => {
     if (link.getAttribute("href") === `#${current}`) {
       link.classList.add("active")
     }
-  })
-})
-
-// Skill items hover effect
-document.querySelectorAll(".skill-item").forEach((item) => {
-  item.addEventListener("mouseenter", function () {
-    this.style.transform = "translateY(-5px) scale(1.05)"
-  })
-
-  item.addEventListener("mouseleave", function () {
-    this.style.transform = "translateY(0) scale(1)"
-  })
-})
-
-// Service cards tilt effect
-document.querySelectorAll(".service-card").forEach((card) => {
-  card.addEventListener("mousemove", function (e) {
-    const rect = this.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-
-    const rotateX = (y - centerY) / 10
-    const rotateY = (centerX - x) / 10
-
-    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`
-  })
-
-  card.addEventListener("mouseleave", function () {
-    this.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)"
   })
 })
 
@@ -215,21 +203,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-// Add loading animation
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded")
-})
-
-// Preloader (optional)
+// Profile card hover effect
 document.addEventListener("DOMContentLoaded", () => {
-  // Hide preloader after page load
-  setTimeout(() => {
-    const preloader = document.querySelector(".preloader")
-    if (preloader) {
-      preloader.style.opacity = "0"
-      setTimeout(() => {
-        preloader.style.display = "none"
-      }, 500)
-    }
-  }, 1000)
+  const profileCard = document.querySelector(".profile-card")
+  if (profileCard) {
+    profileCard.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-10px) scale(1.02)"
+    })
+
+    profileCard.addEventListener("mouseleave", function () {
+      this.style.transform = "translateY(0) scale(1)"
+    })
+  }
 })
