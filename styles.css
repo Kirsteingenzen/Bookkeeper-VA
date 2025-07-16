@@ -5,24 +5,26 @@
 }
 
 :root {
-  --primary-color: #6366f1;
-  --secondary-color: #8b5cf6;
-  --accent-color: #f59e0b;
+  --primary-color: #d946ef;
+  --secondary-color: #a855f7;
+  --accent-color: #ec4899;
   --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
+  --text-secondary: #e2e8f0;
   --bg-primary: #0f0f23;
   --bg-secondary: #1a1a2e;
-  --bg-card: #16213e;
-  --border-color: #374151;
-  --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --bg-card: rgba(30, 30, 60, 0.8);
+  --border-color: rgba(168, 85, 247, 0.2);
+  --gradient: linear-gradient(135deg, #a855f7, #d946ef, #ec4899);
+  --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 25%, #581c87 50%, #7c2d92 75%, #be185d 100%);
 }
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: var(--bg-primary);
+  background: var(--bg-gradient);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .container {
@@ -36,8 +38,9 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(15, 15, 35, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(30, 27, 75, 0.95);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.1);
   z-index: 1000;
   transition: all 0.3s ease;
 }
@@ -114,7 +117,7 @@ body {
   display: flex;
   align-items: center;
   position: relative;
-  background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(212, 70, 239, 0.15) 0%, transparent 70%);
 }
 
 .hero-container {
@@ -359,7 +362,8 @@ section {
 
 /* About Section */
 .about {
-  background: var(--bg-secondary);
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(10px);
 }
 
 .about-content {
@@ -443,13 +447,14 @@ section {
 }
 
 .service-card {
-  background: var(--bg-card);
+  background: rgba(30, 30, 60, 0.9);
   padding: 40px 30px;
   border-radius: 15px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(168, 85, 247, 0.3);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .service-card::before {
@@ -522,7 +527,8 @@ section {
 
 /* Experience Section */
 .experience {
-  background: var(--bg-secondary);
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(10px);
 }
 
 .timeline {
@@ -567,12 +573,13 @@ section {
 }
 
 .timeline-content {
-  background: var(--bg-card);
+  background: rgba(30, 30, 60, 0.9);
   padding: 30px;
   border-radius: 15px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(168, 85, 247, 0.3);
   width: 45%;
   position: relative;
+  backdrop-filter: blur(10px);
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
@@ -640,10 +647,11 @@ section {
 }
 
 .contact-form {
-  background: var(--bg-card);
+  background: rgba(30, 30, 60, 0.9);
   padding: 40px;
   border-radius: 15px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .form-group {
@@ -654,8 +662,8 @@ section {
 .form-group textarea {
   width: 100%;
   padding: 15px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: rgba(15, 15, 35, 0.8);
+  border: 1px solid rgba(168, 85, 247, 0.3);
   border-radius: 10px;
   color: var(--text-primary);
   font-family: inherit;
@@ -666,6 +674,7 @@ section {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(212, 70, 239, 0.1);
 }
 
 .form-group input::placeholder,
@@ -675,9 +684,10 @@ section {
 
 /* Footer */
 .footer {
-  background: var(--bg-secondary);
+  background: rgba(15, 15, 35, 0.9);
   padding: 40px 0;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid rgba(168, 85, 247, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .footer-content {
