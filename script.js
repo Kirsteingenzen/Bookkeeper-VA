@@ -216,3 +216,30 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 })
+
+// Update last modified date in sitemap
+document.addEventListener("DOMContentLoaded", () => {
+  const lastUpdatedElement = document.getElementById("lastUpdated")
+  if (lastUpdatedElement) {
+    const currentDate = new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+    lastUpdatedElement.textContent = currentDate
+  }
+})
+
+// Sitemap link smooth scrolling
+document.querySelectorAll('.sitemap a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault()
+    const target = document.querySelector(this.getAttribute("href"))
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+    }
+  })
+})
